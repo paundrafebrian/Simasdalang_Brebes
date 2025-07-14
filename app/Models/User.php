@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'place_birth',
+        'date_birth',
+        'address',
+        'phone_number',
+        'school',
+        'major',
+        'internship_start',
+        'internship_end',
+        'photo',
+        'role',
     ];
 
     /**
@@ -37,11 +48,16 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'date_birth' => 'date',
+        'internship_start' => 'date',
+        'internship_end' => 'date',
+    ];
+
+    public function activities()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Activity::class,'user_id');
     }
 }

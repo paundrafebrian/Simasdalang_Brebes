@@ -8,7 +8,8 @@
       <div class="container section-title" data-aos="fade-up">
         <h2>Tentang</h2>
         <p>Sistem Informasi Data PKL dan Magang</p>
-      </div><!-- End Section Title -->
+      </div>
+      <!-- End Section Title -->
 
       <div class="container">
         <div class="row gy-5">

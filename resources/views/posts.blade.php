@@ -12,9 +12,9 @@
 
       <div class="container">
         <div class="row gy-4">
-          <h1>Judul Artikel</h1>
-          <h5>Author</h5>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae perspiciatis veritatis dolor delectus odio et, consequatur eaque culpa explicabo nobis minus eius tempore necessitatibus alias aliquam ratione molestias maxime accusamus! Error, velit, illum accusantium odio voluptates adipisci iure consequatur est accusamus delectus rem. Debitis blanditiis nesciunt nisi cum, amet culpa. Quos voluptate at similique, tempora reiciendis sunt laborum hic explicabo iure aliquid consectetur? Aperiam nihil facere, voluptatem voluptas reiciendis dolores ut distinctio soluta, omnis culpa, explicabo sint doloribus numquam fugit et. Sint, velit necessitatibus! Quo necessitatibus aliquid ipsam tempore ab repellat nam, ratione, nisi voluptatem placeat porro quia accusantium facilis.</p>
+          <h3>Kegiatan Memeriahkan Hari Kemerdekaan ke 79 Tahun Negara Kesatuan Republik Indonesia</h3>
+          <h5>Admin</h5>
+          <p>Dalam rangka memeriahkan Hari Kemerdekaan Negara Republik Indonesia yang ke-79, Dinas Komunikasi, Informatika, dan Statistik (Dinkominfotik) Kabupaten Brebes mengadakan serangkaian lomba yang penuh keceriaan. Kegiatan ini diikuti oleh siswa-siswi PKL, mahasiswa magang, serta seluruh pegawai Dinkominfotik. Berbagai lomba tradisional seperti makan kerupuk, membawa kelereng dengan sendok, memecahkan kantong plastik berisi air, saling bertukar sarung, tarik tambang, hingga lomba karaoke turut memeriahkan suasana. Acara ini tidak hanya menjadi ajang untuk mempererat kebersamaan, tetapi juga untuk menghormati semangat perjuangan kemerdekaan dengan penuh sukacita dan semangat nasionalisme.</p>
         </div>
       </div>
       
