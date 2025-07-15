@@ -19,14 +19,12 @@ Route::get('/', function () {
         'title' => 'Home',
     ]);
 });
-
 // Halaman Tentang
 Route::get('/tentang', function () {
     return view('about', [
         'title' => 'Tentang'
     ]);
 });
-
 // Halaman Kontak
 Route::get('/kontak', function () {
     return view('contact', [
