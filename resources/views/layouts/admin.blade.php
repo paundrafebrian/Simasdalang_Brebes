@@ -21,7 +21,7 @@
     <div id="app">
 
         <!-- Start Sidebar -->
-        @include('partials.admin_sidebar')
+        @include('partials.sidebar')
         <!-- End Sidebar -->
 
         <div id="main" class="layout-navbar navbar-fixed">

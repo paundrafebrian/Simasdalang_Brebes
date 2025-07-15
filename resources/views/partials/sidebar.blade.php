@@ -35,34 +35,71 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item {{ request()->is('dashboard*') ? 'active' : '' }}">
-                    <a href="/dashboard" class="sidebar-link">
-                        <i class="bi bi-house-door"></i>
-                        <span>Home</span>
-                    </a>
+                <!-- Menu Home -->
+                <li class="sidebar-item {{ request()->is('admin/dashboard*') || request()->is('dashboard*') ? 'active' : '' }}">
+                    @if (Auth::user()->role === 'admin' || Auth::user()->role === 'user')
+                        <a href="{{ Auth::user()->role === 'admin' ? route('admin.dashboard') : route('user.dashboard') }}" class="sidebar-link">
+                            <i class="bi bi-house-door"></i>
+                            <span>{{ Auth::user()->role === 'admin' ? 'Dashboard' : 'Dashboard' }}</span>
+                        </a>
+                    @endif
                 </li>
 
-                @auth
-                    {{-- <li class="sidebar-title">Data</li> --}}
+
+                <!-- Menu User Management (Admin only) -->
+                @if (Auth::user()->role === 'admin')
+                    <li class="sidebar-item {{ request()->is('admin/profile*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.profile.admin-user') }}" class="sidebar-link">
+                            <i class="bi bi-person-fill"></i>
+                            <span>User Management</span>
+                        </a>
+                    </li>
+                @endif
+
+                <!-- Menu Profile (User) -->
+                @if (Auth::user()->role === 'user')
                     <li class="sidebar-item {{ request()->is('profile*') ? 'active' : '' }}">
-                        <a href="/profile" class="sidebar-link">
+                        <a href="{{ route('profile.index') }}" class="sidebar-link">
                             <i class="bi bi-person-square"></i>
                             <span>Profile</span>
                         </a>
                     </li>
+
+                    <!-- Menu Kegiatan (User) -->
                     <li class="sidebar-item {{ request()->is('activities*') ? 'active' : '' }}">
                         <a href="/activities" class="sidebar-link">
                             <i class="bi bi-journal-bookmark-fill"></i>
                             <span>Kegiatan</span>
                         </a>
                     </li>
-                    <li class="sidebar-item {{ request()->is('surat-masuk*') ? 'active' : '' }}">
+                @endif
+
+                <!-- Menu Surat Masuk (Admin, Instansi, dan User) -->
+                <li class="sidebar-item {{ request()->is('surat-masuk*') ? 'active' : '' }}">
+                    @if (Auth::user()->role === 'admin' || Auth::user()->role === 'instansi')
+                        <a href="{{ route('admin.surat-masuk.index') }}" class="sidebar-link">
+                            <i class="bi bi-envelope"></i>
+                            <span>Surat Masuk</span>
+                        </a>
+                    @else
                         <a href="/surat-masuk" class="sidebar-link">
                             <i class="bi bi-envelope"></i>
                             <span>Surat Masuk</span>
                         </a>
-                    </li>
-                @endauth
+                    @endif
+                </li>
+
+
+                <!-- Menu Template Penilaian (Admin, Instansi) -->
+                @if(Auth::user()->role === 'admin' || Auth::user()->role === 'instansi')
+                <li class="sidebar-item {{ request()->is('template-penilaian*') ? 'active' : '' }}">
+                    <a href="/template-penilaian" class="sidebar-link">
+                        <i class="bi bi-card-checklist"></i>
+                        <span>Template Penilaian</span>
+                    </a>
+                </li>
+                @endif
+
 
             </ul>
         </div>

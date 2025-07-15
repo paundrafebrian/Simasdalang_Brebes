@@ -60,7 +60,7 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-inline-flex justify-content-center align-items-center">
-                                            <a href="{{ route('activities.edit', $activity->id) }}" class="btn btn-warning btn-sm d-flex align-items-center mx-1" style="line-height: 1;">
+                                            <a href="#" class="btn btn-warning btn-sm d-flex align-items-center mx-1" style="line-height: 1;">
                                                 <i class="bi bi-pencil-square" style="font-size: 16px; vertical-align: middle;"></i>
                                                 <span class="ms-1" style="vertical-align: middle;">Edit</span>
                                             </a>

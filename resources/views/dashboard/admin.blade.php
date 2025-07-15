@@ -53,7 +53,7 @@
                         </div>
                         <div class="card-body">
                             <p>Kelola surat masuk yang diterima oleh sistem</p>
-                            <a href="{{ route('surat-masuk.index') }}" class="btn btn-primary">Lihat Surat Masuk</a>
+                            <a href="{{ route('admin.surat-masuk.index') }}" class="btn btn-primary">Lihat Surat Masuk</a>
                         </div>
                     </div>
                 </div>

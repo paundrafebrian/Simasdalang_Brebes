@@ -73,7 +73,7 @@
                                 </td> --}}
                                 <td class="text-center">{{ $surat->status }}</td>
                                 <td class="text-center">
-                                    <form action="{{ route('surat-masuk.update-status', $surat->id) }}" method="POST"
+                                    <form action="{{ route('admin.surat-masuk.update-status', $surat->id) }}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('PUT')
