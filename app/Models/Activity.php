@@ -24,4 +24,15 @@ class Activity extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+     public function kanbanCards()
+    {
+        return $this->hasMany(KanbanCard::class);
+    }
+
+    public function kanbanColumns()
+    {
+        return $this->hasMany(KanbanColumn::class);
+    }
+
 }

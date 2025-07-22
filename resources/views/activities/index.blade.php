@@ -28,9 +28,9 @@
     <a href="{{ route('activities.create') }}" class="btn btn-primary mb-3">Tambah Kegiatan</a>
 
     @if (session('success'))
-        <div id="success-alert" class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    <div id="success-alert" class="alert alert-success">
+        {{ session('success') }}
+    </div>
     @endif
 
     <section class="section">
@@ -49,29 +49,51 @@
                         </thead>
                         <tbody>
                             @foreach ($activities as $activity)
-                                <tr>
-                                    <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td class="text-center" style="white-space: nowrap;">{{ $activity->date->format('d-m-Y') }}</td>
-                                    <td>{{ $activity->description }}</td>
-                                    <td class="text-center">
-                                        @if ($activity->photo)
-                                            <img src="{{ asset('storage/' . $activity->photo) }}" alt="Foto" width="100" style="max-width: 100px; max-height: 100px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="showImage('{{ asset('storage/' . $activity->photo) }}')">
-                                        @endif
-                                    </td>
-                                    <td class="text-center">
-                                        <div class="d-inline-flex justify-content-center align-items-center">
-                                            <a href="#" class="btn btn-warning btn-sm d-flex align-items-center mx-1" style="line-height: 1;">
-                                                <i class="bi bi-pencil-square" style="font-size: 16px; vertical-align: middle;"></i>
-                                                <span class="ms-1" style="vertical-align: middle;">Edit</span>
-                                            </a>
+                            <tr>
+                                <td class="text-center">{{ $loop->iteration }}</td>
+                                <td class="text-center" style="white-space: nowrap;">{{ $activity->date->format('d-m-Y')
+                                    }}</td>
+                                <td>{{ $activity->description }}</td>
+                                <td class="text-center">
+                                    @if ($activity->photo)
+                                    <img src="{{ asset('storage/' . $activity->photo) }}" alt="Foto" width="100"
+                                        style="max-width: 100px; max-height: 100px; object-fit: cover; cursor: pointer;"
+                                        data-bs-toggle="modal" data-bs-target="#imageModal"
+                                        onclick="showImage('{{ asset('storage/' . $activity->photo) }}')">
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    <div class="d-inline-flex justify-content-center align-items-center">
+                                        <a href="#" class="btn btn-warning btn-sm d-flex align-items-center mx-1"
+                                            style="line-height: 1;">
+                                            <i class="bi bi-pencil-square"
+                                                style="font-size: 16px; vertical-align: middle;"></i>
+                                            <span class="ms-1" style="vertical-align: middle;">Edit</span>
+                                        </a>
 
-                                            <button type="button" class="btn btn-danger btn-sm d-flex align-items-center mx-1" onclick="confirmDelete({{ $activity->id }})" style="line-height: 1;">
-                                                <i class="bi bi-trash" style="font-size: 16px; vertical-align: middle;"></i>
-                                                <span class="ms-1" style="vertical-align: middle;">Hapus</span>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        {{-- <a href="{{ route('kanban.index', $activity->id) }}"
+                                            class="btn btn-info btn-sm d-flex align-items-center mx-1"
+                                            style="line-height: 1;">
+                                            <i class="bi bi-eye" style="font-size: 16px; vertical-align: middle;"></i>
+                                            <span class="ms-1">Lihat</span>
+                                        </a> --}}
+                                        {{-- Show Kegiatan --}}
+                                        <a href="{{ route('kanban.show', $activity->id) }}"
+                                            class="btn btn-info btn-sm d-flex align-items-center mx-1"
+                                            style="line-height: 1;">
+                                            <i class="bi bi-eye" style="font-size: 16px; vertical-align: middle;"></i>
+                                            <span class="ms-1">Lihat</span>
+                                        </a>
+
+                                        <button type="button"
+                                            class="btn btn-danger btn-sm d-flex align-items-center mx-1"
+                                            onclick="confirmDelete({{ $activity->id }})" style="line-height: 1;">
+                                            <i class="bi bi-trash" style="font-size: 16px; vertical-align: middle;"></i>
+                                            <span class="ms-1" style="vertical-align: middle;">Hapus</span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -90,14 +112,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center">
-                <img id="previewImage" src="" alt="Preview Foto" style="width: 100%; max-height: 500px; object-fit: contain;">
+                <img id="previewImage" src="" alt="Preview Foto"
+                    style="width: 100%; max-height: 500px; object-fit: contain;">
             </div>
         </div>
     </div>
 </div>
 
 <!-- Modal Konfirmasi Hapus -->
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">

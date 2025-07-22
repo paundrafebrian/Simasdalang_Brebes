@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\NotificationController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -33,6 +34,8 @@ Route::get('/kontak', function () {
         'title' => 'Kontak'
     ]);
 });
+
+
 
 // Route Login dan Register
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -60,8 +63,38 @@ Route::middleware(['auth'])->group(function () {
     // Aktivitas
     Route::resource('activities', ActivityController::class);
 
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->middleware('auth');
+
+
+    // API endpoint untuk fetch data notifikasi (JSON)
+    Route::get('/notifications/list', [NotificationController::class, 'getNotifications'])->name('notifications.list');
+
     // Kanban Board
     Route::get('/kanban', [KanbanController::class, 'index'])->name('kanban.index');
+
+    Route::prefix('kanban')->group(function () {
+        // Kanban utama
+        Route::get('/{activity}', [KanbanController::class, 'show'])->name('kanban.show');
+        Route::post('/{activity}/columns', [KanbanController::class, 'storeColumn'])->name('kanban.columns.store');
+
+        // Card dan Kolom
+        Route::post('/columns/{column}/cards', [KanbanController::class, 'storeCard'])->name('kanban.cards.store');
+        Route::post('/cards/{card}/move', [KanbanController::class, 'moveCard'])->name('kanban.cards.move');
+
+        // Notes Card
+        Route::get('/cards/{card}', [KanbanController::class, 'getCard'])->name('kanban.cards.get');
+        Route::put('/cards/{card}/update-notes', [KanbanController::class, 'updateNotes'])->name('kanban.cards.update-notes');
+
+        // Komentar pada Card
+        Route::post('/cards/{card}/comments', [KanbanController::class, 'storeComment'])->name('kanban.cards.comment');
+
+        // Autocomplete Mention User
+        Route::get('/users/autocomplete', [KanbanController::class, 'autocompleteUsers'])->name('kanban.users.autocomplete');
+    });
+
+
+
 
     // Surat Masuk
     Route::resource('surat-masuk', SuratMasukController::class);
@@ -89,6 +122,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // Kanban Board
     Route::get('profile/{user}/kanban', [AdminController::class, 'kanban'])->name('kanban.index');
 });
+
+
+
 
 // Logout route
 Route::post('/logout', function () {

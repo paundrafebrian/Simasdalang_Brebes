@@ -7,9 +7,9 @@
             <h3>Kanban Board</h3>
             <p class="text-muted">Manajemen Kegiatan</p>
         </div>
-        <div class="col-auto">
+        {{-- <div class="col-auto">
             <a href="{{ route('activities.create') }}" class="btn btn-primary">Tambah Kegiatan</a>
-        </div>
+        </div> --}}
     </div>
 
     <div class="row">
@@ -21,16 +21,19 @@
                 </div>
                 <div class="card-body" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
                     @foreach($activities as $activity)
-                        @if($activity->status == 'todo')
-                            <div class="kanban-item card mb-2" id="item-{{ $activity->id }}" draggable="true" ondragstart="drag(event)">
-                                <div class="card-body">
-                                    <h6 class="card-title">{{ $activity->description }}</h6>
-                                    <p class="card-text">{{ $activity->date->format('d-m-Y') }}</p>
-                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editActivity({{ $activity->id }})">Edit</button>
-                                    <button class="btn btn-danger btn-sm" onclick="deleteActivity({{ $activity->id }})">Hapus</button>
-                                </div>
-                            </div>
-                        @endif
+                    @if($activity->status == 'todo')
+                    <div class="kanban-item card mb-2" id="item-{{ $activity->id }}" draggable="true"
+                        ondragstart="drag(event)">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ $activity->description }}</h6>
+                            <p class="card-text">{{ $activity->date->format('d-m-Y') }}</p>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal"
+                                onclick="editActivity({{ $activity->id }})">Edit</button>
+                            <button class="btn btn-danger btn-sm"
+                                onclick="deleteActivity({{ $activity->id }})">Hapus</button>
+                        </div>
+                    </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
@@ -44,16 +47,19 @@
                 </div>
                 <div class="card-body" id="in-progress" ondrop="drop(event)" ondragover="allowDrop(event)">
                     @foreach($activities as $activity)
-                        @if($activity->status == 'in-progress')
-                            <div class="kanban-item card mb-2" id="item-{{ $activity->id }}" draggable="true" ondragstart="drag(event)">
-                                <div class="card-body">
-                                    <h6 class="card-title">{{ $activity->description }}</h6>
-                                    <p class="card-text">{{ $activity->date->format('d-m-Y') }}</p>
-                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editActivity({{ $activity->id }})">Edit</button>
-                                    <button class="btn btn-danger btn-sm" onclick="deleteActivity({{ $activity->id }})">Hapus</button>
-                                </div>
-                            </div>
-                        @endif
+                    @if($activity->status == 'in-progress')
+                    <div class="kanban-item card mb-2" id="item-{{ $activity->id }}" draggable="true"
+                        ondragstart="drag(event)">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ $activity->description }}</h6>
+                            <p class="card-text">{{ $activity->date->format('d-m-Y') }}</p>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal"
+                                onclick="editActivity({{ $activity->id }})">Edit</button>
+                            <button class="btn btn-danger btn-sm"
+                                onclick="deleteActivity({{ $activity->id }})">Hapus</button>
+                        </div>
+                    </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
@@ -67,16 +73,19 @@
                 </div>
                 <div class="card-body" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
                     @foreach($activities as $activity)
-                        @if($activity->status == 'done')
-                            <div class="kanban-item card mb-2" id="item-{{ $activity->id }}" draggable="true" ondragstart="drag(event)">
-                                <div class="card-body">
-                                    <h6 class="card-title">{{ $activity->description }}</h6>
-                                    <p class="card-text">{{ $activity->date->format('d-m-Y') }}</p>
-                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal" onclick="editActivity({{ $activity->id }})">Edit</button>
-                                    <button class="btn btn-danger btn-sm" onclick="deleteActivity({{ $activity->id }})">Hapus</button>
-                                </div>
-                            </div>
-                        @endif
+                    @if($activity->status == 'done')
+                    <div class="kanban-item card mb-2" id="item-{{ $activity->id }}" draggable="true"
+                        ondragstart="drag(event)">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ $activity->description }}</h6>
+                            <p class="card-text">{{ $activity->date->format('d-m-Y') }}</p>
+                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal"
+                                onclick="editActivity({{ $activity->id }})">Edit</button>
+                            <button class="btn btn-danger btn-sm"
+                                onclick="deleteActivity({{ $activity->id }})">Hapus</button>
+                        </div>
+                    </div>
+                    @endif
                     @endforeach
                 </div>
             </div>
@@ -88,7 +97,7 @@
 
 @section('scripts')
 <script>
-// Fungsi untuk memungkinkan drag
+    // Fungsi untuk memungkinkan drag
 function allowDrop(ev) {
     ev.preventDefault();
 }

@@ -99,13 +99,13 @@
                                     <i class="bi bi-pencil-square" style="font-size: 16px; vertical-align: middle;"></i>
                                     <span class="ms-1">Edit</span>
                                 </a>
-
                                 {{-- Show Kegiatan --}}
-                                <a href="{{ route('activities.show', $activity->id) }}"
+                                <a href="{{ route('kanban.show', $activity->id) }}"
                                     class="btn btn-info btn-sm d-flex align-items-center mx-1" style="line-height: 1;">
                                     <i class="bi bi-eye" style="font-size: 16px; vertical-align: middle;"></i>
                                     <span class="ms-1">Lihat</span>
                                 </a>
+
 
                                 <button type="button" class="btn btn-danger btn-sm d-flex align-items-center mx-1"
                                     onclick="confirmDelete({{ $activity->id }})" style="line-height: 1;">
